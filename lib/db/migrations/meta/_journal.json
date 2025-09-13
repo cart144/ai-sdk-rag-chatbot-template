@@ -8,6 +8,41 @@
       "when": 1719997972944,
       "tag": "0000_yielding_bloodaxe",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1757677728836,
+      "tag": "0001_cold_tigra",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1757679911799,
+      "tag": "0002_freezing_james_howlett",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1757691089302,
+      "tag": "0003_hesitant_orphan",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1757749748887,
+      "tag": "0004_glossy_wolverine",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1757756897782,
+      "tag": "0005_lovely_true_believers",
+      "breakpoints": true
     }
   ]
 }

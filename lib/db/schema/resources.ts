@@ -10,6 +10,12 @@ export const resources = pgTable("resources", {
     .primaryKey()
     .$defaultFn(() => nanoid()),
   content: text("content").notNull(),
+  category: varchar("category", { length: 100 })
+    .notNull()
+    .default("general"),
+  agentId: varchar("agent_id", { length: 50 })
+    .notNull()
+    .default("general"),
 
   createdAt: timestamp("created_at")
     .notNull()

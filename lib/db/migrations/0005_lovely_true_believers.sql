@@ -1,0 +1,1 @@
+ALTER TABLE "resources" ADD COLUMN "category" varchar(100) DEFAULT 'general' NOT NULL;
