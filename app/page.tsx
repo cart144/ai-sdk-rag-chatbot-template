@@ -581,10 +581,10 @@ export default function Chat() {
           fileInputRef.current.value = '';
         }
       } else {
-        setUploadStatus(`Errore: ${result.error}`);
+        setUploadStatus(`Error: ${result.error}`);
       }
     } catch (error) {
-      setUploadStatus(`Errore nell'upload: ${error instanceof Error ? error.message : 'Errore sconosciuto'}`);
+      setUploadStatus(`Upload error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsUploading(false);
     }
@@ -607,7 +607,7 @@ export default function Chat() {
             </SheetTrigger>
             <SheetContent side="left" className="w-80 p-0 flex flex-col">
               <SheetHeader className="p-4 border-b">
-                <SheetTitle>Agenti & Chat</SheetTitle>
+                <SheetTitle>Agents & Chat</SheetTitle>
                 <SheetDescription>
                   Seleziona un agente e gestisci le tue conversazioni
                 </SheetDescription>
@@ -787,7 +787,7 @@ export default function Chat() {
                                   className="text-destructive"
                                 >
                                   <Trash2 className="mr-2 h-4 w-4" />
-                                  Elimina
+                                  Delete
                                 </DropdownMenuItem>
                               </DropdownMenuContent>
                             </DropdownMenu>
@@ -810,7 +810,7 @@ export default function Chat() {
                     }}
                   >
                     <Settings className="h-4 w-4" />
-                    <span className="text-sm">Configurazione</span>
+                    <span className="text-sm">Configuration</span>
                   </Button>
                 </div>
               </div>
@@ -833,7 +833,7 @@ export default function Chat() {
       <div className="flex-1 overflow-auto p-4 space-y-4">
         {uploadStatus && (
           <div className={`p-3 rounded-lg border ${
-            uploadStatus.includes('Errore') 
+            uploadStatus.includes('Error') 
               ? 'bg-destructive/10 border-destructive text-destructive' 
               : 'bg-green-50 border-green-200 text-green-800'
           }`}>
@@ -946,7 +946,7 @@ export default function Chat() {
         >
           <Input
             value={input}
-            placeholder="Scrivi il tuo messaggio..."
+            placeholder="Write your message..."
             onChange={(e) => setInput(e.target.value)}
             className="flex-1"
           />
@@ -1008,14 +1008,14 @@ export default function Chat() {
               {agentToConfig ? (
                 <>
                   <span className="text-xl">{agentToConfig.avatar}</span>
-                  <span>Configurazione {agentToConfig.name}</span>
+                  <span>Configuration {agentToConfig.name}</span>
                 </>
               ) : (
-                <span>Configurazione Agente</span>
+                <span>Agent Configuration</span>
               )}
             </DialogTitle>
             <DialogDescription>
-              Modifica il prompt di sistema e gestisci i documenti RAG per questo agente.
+              Edit the system prompt and manage RAG documents for this agent.
             </DialogDescription>
           </DialogHeader>
           
@@ -1034,7 +1034,7 @@ export default function Chat() {
                     <Input
                       value={editedAgentName}
                       onChange={(e) => setEditedAgentName(e.target.value)}
-                      placeholder="Nome dell'agente"
+                      placeholder="Agent name"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -1058,7 +1058,7 @@ export default function Chat() {
                 <Textarea
                   value={editedSystemPrompt}
                   onChange={(e) => setEditedSystemPrompt(e.target.value)}
-                  placeholder="Inserisci il system prompt per questo agente..."
+                  placeholder="Enter the system prompt for this agent..."
                   className="min-h-[200px] resize-none"
                 />
                 <p className="text-xs text-muted-foreground mt-2">
@@ -1071,7 +1071,7 @@ export default function Chat() {
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-semibold flex items-center gap-2">
                     <FileText className="h-4 w-4" />
-                    Documenti RAG ({ragDocuments.length})
+                    RAG Documents ({ragDocuments.length})
                   </h3>
                   <div className="flex gap-2">
                     <input
@@ -1100,7 +1100,7 @@ export default function Chat() {
                         <TableHead className="w-8"></TableHead>
                         <TableHead>File</TableHead>
                         <TableHead className="w-20">Dimensione</TableHead>
-                        <TableHead className="w-24">Caricato</TableHead>
+                        <TableHead className="w-24">Uploaded</TableHead>
                         <TableHead className="w-20">Azioni</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -1169,10 +1169,10 @@ export default function Chat() {
               {agentToConfig && (
                 <div className="flex justify-end gap-2 pt-4 border-t">
                   <Button variant="outline" onClick={() => setConfigDialogOpen(false)}>
-                    Annulla
+                    Cancel
                   </Button>
                   <Button onClick={saveAgentConfig}>
-                    Salva Configurazione
+                    Save Configuration
                   </Button>
                 </div>
               )}
@@ -1186,10 +1186,10 @@ export default function Chat() {
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Settings className="h-5 w-5" />
-              <span>Configurazione Sistema</span>
+              <span>System Configuration</span>
             </DialogTitle>
             <DialogDescription>
-              Modifica le impostazioni globali dell'applicazione.
+              Edit the global application settings.
             </DialogDescription>
           </DialogHeader>
           
@@ -1217,7 +1217,7 @@ export default function Chat() {
             <div className="flex flex-col gap-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
                 <Bot className="h-4 w-4" />
-                OpenAI Configurazione
+                OpenAI Configuration
               </h3>
               <div className="flex flex-col">
                 <label className="text-sm font-medium mb-2">API Key</label>
@@ -1258,10 +1258,10 @@ export default function Chat() {
           {/* Dialog Actions */}
           <div className="flex justify-end gap-2 pt-4 border-t">
             <Button variant="outline" onClick={() => setSettingsDialogOpen(false)}>
-              Annulla
+              Cancel
             </Button>
             <Button onClick={saveSettingsConfig}>
-              Salva Configurazione
+              Save Configuration
             </Button>
           </div>
         </DialogContent>
