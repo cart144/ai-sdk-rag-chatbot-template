@@ -18,58 +18,58 @@ export interface Conversation {
 export const MOCK_CONVERSATIONS: Conversation[] = [
   {
     id: "conv-1",
-    title: "Strategia di Marketing 2025",
+    title: "Marketing Strategy 2025",
     agentId: "advisor",
-    lastMessage: "Analizza questi dati di mercato per la nostra prossima campagna...",
-    timestamp: new Date(Date.now() - 30 * 60 * 1000), // 30 min fa
+    lastMessage: "Analyze this market data for our next campaign...",
+    timestamp: new Date(Date.now() - 30 * 60 * 1000), // 30 min ago
     messageCount: 12
   },
   {
     id: "conv-2", 
-    title: "Sviluppo Competenze Leadership",
+    title: "Leadership Skills Development",
     agentId: "mentor",
-    lastMessage: "Come posso migliorare le mie capacità di comunicazione con il team?",
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 ore fa
+    lastMessage: "How can I improve my communication skills with the team?",
+    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
     messageCount: 8
   },
   {
     id: "conv-3",
-    title: "Idee per App Innovativa",
+    title: "Innovative App Ideas",
     agentId: "innovator", 
-    lastMessage: "Pensiamo a una soluzione rivoluzionaria per il fitness...",
-    timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 ore fa
+    lastMessage: "Let's think of a revolutionary solution for fitness...",
+    timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
     messageCount: 15
   },
   {
     id: "conv-4",
     title: "Report Performance Q4",
     agentId: "analyst",
-    lastMessage: "I KPI mostrano un trend interessante nelle vendite...",
-    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 giorno fa
+    lastMessage: "The KPIs show an interesting trend in sales...",
+    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
     messageCount: 6
   },
   {
     id: "conv-5",
-    title: "Piano Implementazione Sistema",
+    title: "System Implementation Plan",
     agentId: "executor",
-    lastMessage: "Definiamo i passaggi concreti per il rollout...",
-    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 giorni fa
+    lastMessage: "Let's define the concrete steps for the rollout...",
+    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
     messageCount: 20
   },
   {
     id: "conv-6",
-    title: "Analisi Competitor",
+    title: "Competitor Analysis",
     agentId: "advisor",
-    lastMessage: "Quali sono i punti di forza dei nostri concorrenti?",
-    timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 giorni fa
+    lastMessage: "What are our competitors' strengths?",
+    timestamp: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
     messageCount: 9
   },
   {
     id: "conv-7",
-    title: "Crescita Personale",
+    title: "Personal Growth",
     agentId: "mentor",
-    lastMessage: "Ho bisogno di consigli per gestire meglio lo stress...",
-    timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 7 giorni fa
+    lastMessage: "I need advice on better managing stress...",
+    timestamp: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), // 7 days ago
     messageCount: 14
   }
 ];
@@ -89,12 +89,12 @@ export function formatTimestamp(date: Date | string): string {
     } else if (date instanceof Date) {
       targetDate = date;
     } else {
-      return 'Ora sconosciuta';
+      return 'Unknown time';
     }
     
     // Check if date is valid
     if (!targetDate || isNaN(targetDate.getTime())) {
-      return 'Ora sconosciuta';
+      return 'Unknown time';
     }
   } catch (error) {
     return 'Ora sconosciuta';
@@ -103,41 +103,41 @@ export function formatTimestamp(date: Date | string): string {
   const diffInMinutes = Math.floor((now.getTime() - targetDate.getTime()) / (1000 * 60));
   
   if (diffInMinutes < 1) {
-    return 'Ora';
+    return 'Now';
   } else if (diffInMinutes < 60) {
-    return `${diffInMinutes}m fa`;
+    return `${diffInMinutes}m ago`;
   } else if (diffInMinutes < 1440) { // 24 ore
-    return `${Math.floor(diffInMinutes / 60)}h fa`;
+    return `${Math.floor(diffInMinutes / 60)}h ago`;
   } else {
-    return `${Math.floor(diffInMinutes / 1440)}g fa`;
+    return `${Math.floor(diffInMinutes / 1440)}d ago`;
   }
 }
 
-// Mock messages per le conversazioni
+// Mock messages for conversations
 const MOCK_MESSAGES: Record<string, ConversationMessage[]> = {
   "conv-1": [
     {
       id: "msg-1",
       role: "user",
-      content: "Ciao! Vorrei analizzare la strategia di marketing per il 2025. Quali sono i trend principali da considerare?",
+      content: "Hello! I'd like to analyze the marketing strategy for 2025. What are the main trends to consider?",
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000)
     },
     {
       id: "msg-2", 
       role: "assistant",
-      content: "Ottima domanda! Per la strategia marketing 2025, vedo tre trend fondamentali:\n\n1. **AI-Driven Personalization**: Personalizzazione estrema usando dati comportamentali\n2. **Sustainable Marketing**: Focus su sostenibilità e responsabilità sociale\n3. **Video-First Strategy**: Contenuti video brevi per Gen Z e Alpha\n\nVorresti che approfondiamo uno di questi aspetti?",
+      content: "Great question! For the 2025 marketing strategy, I see three fundamental trends:\n\n1. **AI-Driven Personalization**: Extreme personalization using behavioral data\n2. **Sustainable Marketing**: Focus on sustainability and social responsibility\n3. **Video-First Strategy**: Short video content for Gen Z and Alpha\n\nWould you like us to dive deeper into one of these aspects?",
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000 + 2 * 60 * 1000)
     },
     {
       id: "msg-3",
       role: "user", 
-      content: "Perfetto! Concentramoci sull'AI-Driven Personalization. Come possiamo implementarla nella nostra azienda?",
+      content: "Perfect! Let's focus on AI-Driven Personalization. How can we implement it in our company?",
       timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000 + 5 * 60 * 1000)
     },
     {
       id: "msg-4",
       role: "assistant",
-      content: "Eccellente focus! L'implementazione dell'AI-Driven Personalization richiede un approccio strutturato:\n\n**Fase 1 - Raccolta Dati**\n- Customer journey mapping\n- Behavioral tracking integrato\n- First-party data strategy\n\n**Fase 2 - Tecnologia**\n- CRM intelligente con ML\n- Dynamic content engine\n- Predictive analytics\n\n**Fase 3 - Contenuti**\n- Messaggi personalizzati per segmento\n- Product recommendations dinamiche\n- Email marketing adattivo\n\nQual è il vostro budget e timeline per questo progetto?",
+      content: "Excellent focus! Implementing AI-Driven Personalization requires a structured approach:\n\n**Phase 1 - Data Collection**\n- Customer journey mapping\n- Integrated behavioral tracking\n- First-party data strategy\n\n**Phase 2 - Technology**\n- Intelligent CRM with ML\n- Dynamic content engine\n- Predictive analytics\n\n**Phase 3 - Content**\n- Personalized messages per segment\n- Dynamic product recommendations\n- Adaptive email marketing\n\nWhat's your budget and timeline for this project?",
       timestamp: new Date(Date.now() - 30 * 60 * 1000)
     }
   ],
@@ -145,13 +145,13 @@ const MOCK_MESSAGES: Record<string, ConversationMessage[]> = {
     {
       id: "msg-5",
       role: "user",
-      content: "Ho difficoltà a comunicare efficacemente con il mio team. Spesso sento che i messaggi non arrivano come vorrei.",
+      content: "I have difficulty communicating effectively with my team. I often feel that messages don't come across as I'd like.",
       timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000)
     },
     {
       id: "msg-6",
       role: "assistant", 
-      content: "Capisco perfettamente la tua preoccupazione. La comunicazione efficace è una skill che si sviluppa con la pratica. Ecco alcune strategie che possono aiutarti:\n\n🎯 **Chiarezza del Messaggio**\n- Struttura: Punto principale → Dettagli → Action items\n- Usa esempi concreti\n- Evita il gergo tecnico quando non necessario\n\n💬 **Ascolto Attivo**\n- Fai domande di chiarimento\n- Riassumi quello che hai sentito\n- Mostra interesse genuino\n\n🤝 **Adatta il Tuo Stile**\n- Riconosci gli stili di comunicazione del team\n- Alcuni preferiscono dettagli, altri sintesi\n\nChe tipo di situazioni ti creano più difficoltà?",
+      content: "I completely understand your concern. Effective communication is a skill that develops with practice. Here are some strategies that can help you:\n\n🎯 **Message Clarity**\n- Structure: Main point → Details → Action items\n- Use concrete examples\n- Avoid technical jargon when unnecessary\n\n💬 **Active Listening**\n- Ask clarifying questions\n- Summarize what you've heard\n- Show genuine interest\n\n🤝 **Adapt Your Style**\n- Recognize your team's communication styles\n- Some prefer details, others summaries\n\nWhat types of situations create the most difficulty for you?",
       timestamp: new Date(Date.now() - 3 * 60 * 60 * 1000 + 3 * 60 * 1000)
     }
   ],
@@ -159,13 +159,13 @@ const MOCK_MESSAGES: Record<string, ConversationMessage[]> = {
     {
       id: "msg-7",
       role: "user",
-      content: "Sto cercando idee per un'app fitness innovativa. Qualcosa che non esiste ancora sul mercato.",
+      content: "I'm looking for ideas for an innovative fitness app. Something that doesn't exist in the market yet.",
       timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000)
     },
     {
       id: "msg-8",
       role: "assistant",
-      content: "Fantastico! L'innovazione nel fitness è un settore in continua evoluzione. Ecco alcune idee disruptive:\n\n🧠 **NeuroFit**: App che usa EEG per ottimizzare gli allenamenti in base allo stato mentale\n- Adatta intensità in base allo stress/energia\n- Meditazione attiva durante cardio\n- Biofeedback real-time\n\n🌍 **EcoFit**: Gamification per sostenibilità\n- Converti calorie bruciate in crediti green\n- Challenge con impatto ambientale reale\n- Partner con progetti di riforestazione\n\n👥 **MirrorFit**: Fitness sociale con AR\n- Allena con amici in realtà aumentata\n- Personal trainer virtuali realistici\n- Correzione postura in tempo reale\n\nQuali di queste direzioni ti ispira di più?",
+      content: "Fantastic! Innovation in fitness is a constantly evolving sector. Here are some disruptive ideas:\n\n🧠 **NeuroFit**: App that uses EEG to optimize workouts based on mental state\n- Adapts intensity based on stress/energy\n- Active meditation during cardio\n- Real-time biofeedback\n\n🌍 **EcoFit**: Gamification for sustainability\n- Convert burned calories to green credits\n- Challenges with real environmental impact\n- Partner with reforestation projects\n\n👥 **MirrorFit**: Social fitness with AR\n- Train with friends in augmented reality\n- Realistic virtual personal trainers\n- Real-time posture correction\n\nWhich of these directions inspires you most?",
       timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000 + 4 * 60 * 1000)
     }
   ]

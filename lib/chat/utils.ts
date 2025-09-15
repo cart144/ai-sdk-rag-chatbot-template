@@ -25,7 +25,7 @@ export async function generateChatResponse(
     // Handle undefined or null messages array
     if (!messages || !Array.isArray(messages)) {
       return {
-        message: 'Ciao! Come posso aiutarti oggi?',
+        message: 'Hello! How can I help you today?',
         success: true
       };
     }
@@ -41,7 +41,7 @@ export async function generateChatResponse(
 
     if (validMessages.length === 0) {
       return {
-        message: 'Ciao! Come posso aiutarti oggi?',
+        message: 'Hello! How can I help you today?',
         success: true
       };
     }
@@ -118,10 +118,10 @@ export async function generateChatResponse(
               
               console.log('createResource returned:', result);
               
-              return 'Informazione salvata con successo nella knowledge base.';
+              return 'Information successfully saved to the knowledge base.';
             } catch (error) {
               console.error('Error in saveInformation tool:', error);
-              return 'Errore nel salvare l\'informazione.';
+              return 'Error saving the information.';
             }
           },
         }),
@@ -143,10 +143,10 @@ export async function generateChatResponse(
               
               console.log('upsertResource returned:', result);
               
-              return `Informazione "${category}" aggiornata con successo nella knowledge base.`;
+              return `Information "${category}" successfully updated in the knowledge base.`;
             } catch (error) {
               console.error('Error in updateInformation tool:', error);
-              return 'Errore nell\'aggiornare l\'informazione.';
+              return 'Error updating the information.';
             }
           },
         })
@@ -164,7 +164,7 @@ export async function generateChatResponse(
   } catch (error) {
     console.error('Error generating chat response:', error);
     return {
-      message: 'Mi dispiace, ho avuto un problema nel processare la tua richiesta. Potresti riprovare?',
+      message: 'Sorry, I had a problem processing your request. Could you please try again?',
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
     };
