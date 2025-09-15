@@ -97,7 +97,7 @@ export function formatTimestamp(date: Date | string): string {
       return 'Unknown time';
     }
   } catch (error) {
-    return 'Ora sconosciuta';
+    return 'Unknown time';
   }
   
   const diffInMinutes = Math.floor((now.getTime() - targetDate.getTime()) / (1000 * 60));
@@ -106,7 +106,7 @@ export function formatTimestamp(date: Date | string): string {
     return 'Now';
   } else if (diffInMinutes < 60) {
     return `${diffInMinutes}m ago`;
-  } else if (diffInMinutes < 1440) { // 24 ore
+  } else if (diffInMinutes < 1440) { // 24 hours
     return `${Math.floor(diffInMinutes / 60)}h ago`;
   } else {
     return `${Math.floor(diffInMinutes / 1440)}d ago`;

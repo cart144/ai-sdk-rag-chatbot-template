@@ -6,7 +6,7 @@ export async function createOpenAIClient() {
   const apiKey = await getOpenAIApiKey();
   
   if (!apiKey) {
-    throw new Error('OpenAI API Key non configurata. Vai nelle impostazioni per configurarla.');
+    throw new Error('OpenAI API Key not configured. Go to settings to configure it.');
   }
   
   return openai.provider({
