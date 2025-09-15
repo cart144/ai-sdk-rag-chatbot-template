@@ -112,7 +112,7 @@ export default function Chat() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          title: title || 'Nuova conversazione',
+          title: title || 'New conversation',
           agentId: selectedAgent.id,
         }),
       });
@@ -609,7 +609,7 @@ export default function Chat() {
               <SheetHeader className="p-4 border-b">
                 <SheetTitle>Agents & Chat</SheetTitle>
                 <SheetDescription>
-                  Seleziona un agente e gestisci le tue conversazioni
+                  Select an agent and manage your conversations
                 </SheetDescription>
               </SheetHeader>
               
@@ -619,7 +619,7 @@ export default function Chat() {
                 {/* Agents Section */}
                 <div className="p-4 border-b">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-medium text-sm text-muted-foreground">AGENTI</h3>
+                    <h3 className="font-medium text-sm text-muted-foreground">AGENTS</h3>
                     <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
                       <Plus className="h-3 w-3" />
                     </Button>
@@ -648,7 +648,7 @@ export default function Chat() {
                             <div className="flex flex-col items-start">
                               <span className="text-xs font-medium">{agent.name}</span>
                               <span className="text-xs text-muted-foreground truncate max-w-[150px]">
-                                {agent.id === selectedAgent.id ? conversations.length : 0} conversazioni
+                                {agent.id === selectedAgent.id ? conversations.length : 0} conversations
                               </span>
                             </div>
                           </Button>
@@ -676,7 +676,7 @@ export default function Chat() {
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-3">
                       <h3 className="font-medium text-sm text-muted-foreground">
-                        CONVERSAZIONI - {selectedAgent.name.toUpperCase()}
+                        CONVERSATIONS - {selectedAgent.name.toUpperCase()}
                       </h3>
                       <Button 
                         size="sm" 
@@ -748,7 +748,7 @@ export default function Chat() {
                               {conversation.lastMessage}
                             </p>
                             <div className="w-full flex items-center justify-between text-xs text-muted-foreground">
-                              <span>{conversation.messageCount} messaggi</span>
+                              <span>{conversation.messageCount} messages</span>
                               <span>{formatTimestamp(conversation.timestamp)}</span>
                             </div>
                           </Button>
@@ -775,12 +775,12 @@ export default function Chat() {
                                   }}
                                 >
                                   <Edit className="mr-2 h-4 w-4" />
-                                  Rinomina
+                                  Rename
                                 </DropdownMenuItem>
                                 <DropdownMenuItem 
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    if (window.confirm('Sei sicuro di voler eliminare questa conversazione?')) {
+                                    if (window.confirm('Are you sure you want to delete this conversation?')) {
                                       deleteConversation(conversation.id);
                                     }
                                   }}
@@ -822,7 +822,7 @@ export default function Chat() {
             <p className="text-sm text-muted-foreground">
               {selectedConversation 
                 ? `${selectedAgent.name} - ${selectedConversation.title}`
-                : `Chatta con ${selectedAgent.name}`
+                : `Chat with ${selectedAgent.name}`
               }
             </p>
           </div>
@@ -976,7 +976,7 @@ export default function Chat() {
             ) : (
               <Paperclip className="h-4 w-4" />
             )}
-            <span className="text-sm">Allegati</span>
+            <span className="text-sm">Attachments</span>
           </Button>
 
           {/* Agent selector */}
@@ -1026,11 +1026,11 @@ export default function Chat() {
               <div className="flex flex-col gap-4">
                 <h3 className="font-semibold mb-3 flex items-center gap-2">
                   <Bot className="h-4 w-4" />
-                  Informazioni Agente
+                  Agent Information
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col">
-                    <label className="text-sm font-medium mb-2">Nome</label>
+                    <label className="text-sm font-medium mb-2">Name</label>
                     <Input
                       value={editedAgentName}
                       onChange={(e) => setEditedAgentName(e.target.value)}
@@ -1038,7 +1038,7 @@ export default function Chat() {
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label className="text-sm font-medium mb-2">Icona (Emoji)</label>
+                    <label className="text-sm font-medium mb-2">Icon (Emoji)</label>
                     <Input
                       value={editedAgentAvatar}
                       onChange={(e) => setEditedAgentAvatar(e.target.value)}
@@ -1062,7 +1062,7 @@ export default function Chat() {
                   className="min-h-[200px] resize-none"
                 />
                 <p className="text-xs text-muted-foreground mt-2">
-                  {editedSystemPrompt.length} caratteri
+                  {editedSystemPrompt.length} characters
                 </p>
               </div>
 
@@ -1088,7 +1088,7 @@ export default function Chat() {
                       onClick={() => configFileInputRef.current?.click()}
                     >
                       <Plus className="h-3 w-3 mr-1" />
-                      Aggiungi File
+                      Add File
                     </Button>
                   </div>
                 </div>
@@ -1099,7 +1099,7 @@ export default function Chat() {
                       <TableRow>
                         <TableHead className="w-8"></TableHead>
                         <TableHead>File</TableHead>
-                        <TableHead className="w-20">Dimensione</TableHead>
+                        <TableHead className="w-20">Size</TableHead>
                         <TableHead className="w-24">Uploaded</TableHead>
                         <TableHead className="w-20">Azioni</TableHead>
                       </TableRow>
@@ -1108,7 +1108,7 @@ export default function Chat() {
                       {ragDocuments.length === 0 ? (
                         <TableRow>
                           <TableCell colSpan={5} className="text-center py-8 text-muted-foreground">
-                            Nessun documento caricato
+                            No documents uploaded
                           </TableCell>
                         </TableRow>
                       ) : (
@@ -1198,17 +1198,17 @@ export default function Chat() {
             <div className="flex flex-col gap-4">
               <h3 className="font-semibold mb-3 flex items-center gap-2">
                 <MessageSquare className="h-4 w-4" />
-                Titolo Applicazione
+                Application Title
               </h3>
               <div className="flex flex-col">
-                <label className="text-sm font-medium mb-2">Titolo</label>
+                <label className="text-sm font-medium mb-2">Title</label>
                 <Input
                   value={editedAppTitle}
                   onChange={(e) => setEditedAppTitle(e.target.value)}
                   placeholder="Multi-Agent RAG Chatbot"
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  Questo titolo apparirà nell'header dell'applicazione
+                  This title will appear in the application header
                 </p>
               </div>
             </div>
@@ -1225,31 +1225,31 @@ export default function Chat() {
                   type="password"
                   value={editedApiKey}
                   onChange={(e) => setEditedApiKey(e.target.value)}
-                  placeholder={settingsData.openai_api_key === '***[CONFIGURED]***' ? 'API Key configurata (lascia vuoto per mantenere)' : 'Inserisci la tua OpenAI API Key'}
+                  placeholder={settingsData.openai_api_key === '***[CONFIGURED]***' ? 'API Key configured (leave empty to keep)' : 'Enter your OpenAI API Key'}
                 />
                 <p className="text-xs text-muted-foreground mt-1">
                   {settingsData.openai_api_key === '***[CONFIGURED]***' 
-                    ? 'Una API Key è già configurata. Inserisci una nuova chiave solo se vuoi sostituirla.'
-                    : 'Inserisci la tua OpenAI API Key per abilitare le funzionalità AI.'
+                    ? 'An API Key is already configured. Enter a new key only if you want to replace it.'
+                    : 'Enter your OpenAI API Key to enable AI features.'
                   }
                 </p>
               </div>
 
               {/* OpenAI Model Section */}
               <div className="flex flex-col">
-                <label className="text-sm font-medium mb-2">Modello OpenAI</label>
+                <label className="text-sm font-medium mb-2">OpenAI Model</label>
                 <select
                   value={editedOpenAIModel}
                   onChange={(e) => setEditedOpenAIModel(e.target.value)}
                   className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <option value="gpt-4o">GPT-4o (Raccomandato)</option>
-                  <option value="gpt-4o-mini">GPT-4o Mini (Veloce)</option>
+                  <option value="gpt-4o">GPT-4o (Recommended)</option>
+                  <option value="gpt-4o-mini">GPT-4o Mini (Fast)</option>
                   <option value="gpt-4-turbo">GPT-4 Turbo</option>
-                  <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Economico)</option>
+                  <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Economic)</option>
                 </select>
                 <p className="text-xs text-muted-foreground mt-1">
-                  Seleziona il modello OpenAI da utilizzare per le risposte AI. GPT-4o offre le migliori prestazioni.
+                  Select the OpenAI model to use for AI responses. GPT-4o offers the best performance.
                 </p>
               </div>
             </div>

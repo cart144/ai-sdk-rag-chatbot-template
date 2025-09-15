@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
     if (!files || files.length === 0) {
       console.log('No files received');
       return NextResponse.json(
-        { error: 'Nessun file caricato' },
+        { error: 'No files uploaded' },
         { status: 400 }
       );
     }
@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
           results.push({
             filename: file.name,
             success: false,
-            error: 'Tipo di file non supportato. Solo file di testo (.txt, .md) sono accettati al momento.'
+            error: 'Unsupported file type. Only text files (.txt, .md) are accepted at the moment.'
           });
           continue;
         }
@@ -58,14 +58,14 @@ export async function POST(request: NextRequest) {
           results.push({
             filename: file.name,
             success: true,
-            message: 'File processato e aggiunto alla knowledge base con successo',
+            message: 'File processed and added to knowledge base successfully',
             id: result
           });
         } else {
           results.push({
             filename: file.name,
             success: false,
-            error: `Errore nella creazione della risorsa: ${result}`
+            error: `Error creating resource: ${result}`
           });
         }
 
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         results.push({
           filename: file.name,
           success: false,
-          error: error instanceof Error ? error.message : 'Errore sconosciuto durante il processamento'
+          error: error instanceof Error ? error.message : 'Unknown error during processing'
         });
       }
     }
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     const totalCount = results.length;
 
     const response = {
-      message: `${successCount}/${totalCount} file processati con successo`,
+      message: `${successCount}/${totalCount} files processed successfully`,
       results
     };
 
@@ -91,9 +91,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(response);
 
   } catch (error) {
-    console.error('Errore generale nell\'upload dei file:', error);
+    console.error('General error uploading files:', error);
     return NextResponse.json(
-      { error: 'Errore interno del server', details: error instanceof Error ? error.message : 'Unknown error' },
+      { error: 'Internal server error', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }

@@ -124,7 +124,7 @@ export const getConversationsByAgent = async (agentId: string) => {
 
         return {
           ...conv,
-          lastMessage: lastMessage.length > 0 ? lastMessage[0].content : 'Nessun messaggio',
+          lastMessage: lastMessage.length > 0 ? lastMessage[0].content : 'No messages',
           timestamp: conv.updatedAt
         };
       })
