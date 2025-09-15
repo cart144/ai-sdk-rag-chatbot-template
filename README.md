@@ -3,8 +3,8 @@
 A modern **Retrieval-Augmented Generation (RAG)** starter kit built with **Next.js**, **TypeScript**, **PostgreSQL + pgvector**, and **shadcn/ui**.  
 Designed to help you quickly build AI-powered applications with semantic search, embeddings, and custom knowledge bases.
 
-![GitHub stars](https://img.shields.io/github/stars/cart144/ai-sdk-rag-starter?style=social)
-![GitHub forks](https://img.shields.io/github/forks/cart144/ai-sdk-rag-starter?style=social)
+![GitHub stars](https://img.shields.io/github/stars/cart144/ai-sdk-rag-chatbot-template?style=social)
+![GitHub forks](https://img.shields.io/github/forks/cart144/ai-sdk-rag-chatbot-template?style=social)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node.js](https://img.shields.io/badge/node-%3E%3D18-blue)
 
@@ -47,8 +47,8 @@ Designed to help you quickly build AI-powered applications with semantic search,
 ### Installation
 
 ```bash
-git clone https://github.com/cart144/ai-sdk-rag-starter.git
-cd ai-sdk-rag-starter
+git clone https://github.com/cart144/ai-sdk-rag-chatbot-template.git
+cd ai-sdk-rag-chatbot-template
 npm install
 cp .env.example .env
 ```
